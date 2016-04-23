@@ -1,23 +1,22 @@
 package ua.mralex;
 
-import java.io.IOException;
-
 public class Main {
+    private static final String PATH = "system.dat";
 
     public static void main(String[] args) {
         try {
-            String path = "system.dat";
-            Parametrs param = new Parametrs(path);
+            Parameters parameters = Parameters.getInstance();
+            parameters.read(PATH);
 
-            Stress dos = new Stress(param);
+            Stress dos = new Stress();
             dos.start();
 
-            Thread.sleep(param.getTimework());
+            Thread.sleep(parameters.getTimer());
             dos.interrupt();
 
-            param.save();
-        } catch (InterruptedException | IOException ex) {
-            System.out.println("ERROR - " + ex.getMessage());
+            parameters.save(PATH);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         } finally {
             System.exit(0);
         }

@@ -1,4 +1,4 @@
-http = https://prog.kiev.ua/forum/;
-connectNumber = 1000;
-timework = 100; 
-allTime = false
+Link = http://www.phys.univ.kiev.ua;
+Number Of Connections = 10000;
+Timer = 100;
+Reconnect = false

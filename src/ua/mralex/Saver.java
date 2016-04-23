@@ -24,7 +24,6 @@ public class Saver {
                 sb.append(str);
             }
         }
-
         return sb.toString();
     }
 }

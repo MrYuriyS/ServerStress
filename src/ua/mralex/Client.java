@@ -9,14 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Client extends Thread {
-
-    private static String address;
-    private static boolean allTime;
-
-    public Client(String address, boolean allTime) {
-        Client.address = address;
-        Client.allTime = allTime;
-    }
+    private static Parameters parameters = Parameters.getInstance();
 
     @Override
     public void run() {
@@ -29,7 +22,7 @@ public class Client extends Thread {
                 return;
             } catch (IOException ex) {
                 ex.printStackTrace();
-                if (!allTime) {
+                if (!parameters.isReconnect()) {
                     interrupt();
                 }
             }
@@ -39,7 +32,7 @@ public class Client extends Thread {
     public String getPage() throws IOException {
         StringBuilder page = new StringBuilder();
 
-        URL url = new URL(address);
+        URL url = new URL(parameters.getLink());
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         try (InputStreamReader is = new InputStreamReader(connection.getInputStream());
              BufferedReader br = new BufferedReader(is)) {
@@ -47,10 +40,6 @@ public class Client extends Thread {
             int size;
             while ((size = br.read(buffer)) >= 0 && !isInterrupted()) {
                 page.append(new String(buffer, 0, size));
-
-                if (isInterrupted()) {
-                    break;
-                }
             }
         } finally {
             connection.disconnect();
@@ -59,19 +48,11 @@ public class Client extends Thread {
         return page.toString();
     }
 
-    public static String getAddress() {
-        return address;
+    public static void setParameters(Parameters parameters) {
+        Client.parameters = parameters;
     }
 
-    public static void setAddress(String address) {
-        Client.address = address;
-    }
-
-    public static boolean isAllTime() {
-        return allTime;
-    }
-
-    public static void setAllTime(boolean allTime) {
-        Client.allTime = allTime;
+    public static Parameters getParameters() {
+        return parameters;
     }
 }
