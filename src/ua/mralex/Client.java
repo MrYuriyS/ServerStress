@@ -59,28 +59,6 @@ public class Client extends Thread {
         return page.toString();
     }
 
-    /*public String getPage() throws IOException {
-        StringBuilder page = new StringBuilder();
-
-        URL url = new URL(address);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        try (InputStream br = connection.getInputStream()) {
-            byte[] buffer = new byte[1024];
-            int size;
-            while ((size = br.read(buffer)) >= 0 && !isInterrupted()) {
-                page.append(new String(buffer, 0, size));
-
-                if (isInterrupted()) {
-                    break;
-                }
-            }
-        } finally {
-            connection.disconnect();
-        }
-
-        return page.toString();
-    }*/
-
     public static String getAddress() {
         return address;
     }
