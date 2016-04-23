@@ -1,6 +1,3 @@
-/*
- 2. Написать программу для стресс-тестирования веб-серверов.
- */
 package ua.mralex;
 
 import java.io.IOException;
