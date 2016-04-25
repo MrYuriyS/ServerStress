@@ -1,4 +1,4 @@
-Link = http://www.phys.univ.kiev.ua;
+Link = https://prog.kiev.ua;
 Number Of Connections = 10000;
-Timer = 100;
-Reconnect = false
+Timer = 300;
+Reconnect = true
