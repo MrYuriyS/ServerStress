@@ -12,7 +12,7 @@ public class Client extends Thread {
                 Server.getPage(parameters.getLink());
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
-                System.err.println(ex.getClass().getSimpleName() + ": " + ex.getMessage());
+                ex.printStackTrace();
                 return;
             } catch (IOException ex) {
                 ex.printStackTrace();
