@@ -20,7 +20,7 @@ public class Parameters {
         return parameters;
     }
 
-    public static void read(String path) throws IOException {
+    public static void read(String path) {
         try {
             String text = Saver.read(path);
             text = text.replace(" ", "");

@@ -8,13 +8,15 @@ public class Main {
             Parameters parameters = Parameters.getInstance();
             parameters.read(PATH);
 
-            Stress dos = new Stress();
-            dos.start();
+            if (Server.getStatus(parameters.getLink()) == 0) {
+                Stress dos = new Stress();
+                dos.start();
 
-            Thread.sleep(parameters.getTimer());
-            dos.interrupt();
+                Thread.sleep(parameters.getTimer());
+                dos.interrupt();
 
-            parameters.save(PATH);
+                parameters.save(PATH);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
