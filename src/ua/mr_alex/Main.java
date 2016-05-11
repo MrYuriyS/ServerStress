@@ -1,4 +1,4 @@
-package ua.mralex;
+package ua.mr_alex;
 
 public class Main {
     private static final String PATH = "system.dat";
@@ -9,17 +9,23 @@ public class Main {
             parameters.read(PATH);
 
             if (Server.getStatus(parameters.getLink()) == 0) {
-                Stress dos = new Stress();
-                dos.start();
+                System.out.println("Stress: START");
+                Stress stress = new Stress();
+                stress.start();
 
                 Thread.sleep(parameters.getTimer());
-                dos.interrupt();
+                System.out.println("Stress: INTERRUPT");
+                stress.interrupt();
 
+                System.out.println("Stress: saving parameters");
                 parameters.save(PATH);
+            } else {
+                System.err.println("WARNING: Server not responding: " + parameters.getLink());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
+            System.out.println("Stress: EXIT");
             System.exit(0);
         }
     }

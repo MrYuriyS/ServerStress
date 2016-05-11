@@ -1,4 +1,4 @@
-package ua.mralex;
+package ua.mr_alex;
 
 import java.io.IOException;
 

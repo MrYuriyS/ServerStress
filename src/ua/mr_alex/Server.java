@@ -1,4 +1,4 @@
-package ua.mralex;
+package ua.mr_alex;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,8 +15,8 @@ public abstract class Server {
         return status;
     }
 
-    public static String getPage(String link) throws IOException {
-        StringBuilder page = new StringBuilder();
+    public static void /*String*/ getPage(String link) throws IOException {
+        //StringBuilder page = new StringBuilder();
 
         URL url = new URL(link);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -24,13 +24,13 @@ public abstract class Server {
              BufferedReader br = new BufferedReader(is)) {
             char[] buffer = new char[1024];
             int size;
-            while ((size = br.read(buffer)) >= 0) {
-                page.append(new String(buffer, 0, size));
+            while (/*(size =*/ br.read(buffer)/*)*/ >= 0) {
+                //page.append(new String(buffer, 0, size));
             }
         } finally {
             connection.disconnect();
         }
 
-        return page.toString();
+        //return page.toString();
     }
 }
