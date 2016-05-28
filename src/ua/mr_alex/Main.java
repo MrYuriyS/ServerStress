@@ -8,7 +8,7 @@ public class Main {
             Parameters parameters = Parameters.getInstance();
             parameters.read(PATH);
 
-            if (Server.getStatus(parameters.getLink()) == 0) {
+            if (Server.getStatus(parameters.getLink()) != 0) {
                 System.out.println("Stress: START");
                 Stress stress = new Stress();
                 stress.start();

@@ -27,7 +27,7 @@ public class Parameters {
 
             String[] pairs = text.split(";");
             for (String pair : pairs) {
-                String[] p = pair.split("==");
+                String[] p = pair.split(":=");
 
                 switch (p[0]) {
                     case "Link":
@@ -61,10 +61,10 @@ public class Parameters {
 
     public static String info() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Link = ").append(link)
-                .append("; \r\nNumber Of Connections = ").append(connectNumber)
-                .append("; \r\nTimer = ").append(timer / 1000)
-                .append("; \r\nReconnect = ").append(reconnect);
+        sb.append("Link := ").append(link)
+                .append("; \r\nNumber Of Connections := ").append(connectNumber)
+                .append("; \r\nTimer := ").append(timer / 1000)
+                .append("; \r\nReconnect := ").append(reconnect);
         return sb.toString();
     }
 

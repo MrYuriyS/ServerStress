@@ -1,13 +1,14 @@
 package ua.mr_alex;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Stress extends Thread {
     private static Parameters parameters = Parameters.getInstance();
 
     @Override
     public void run() {
-        ArrayList<Thread> clients = createClients();
+        List<Thread> clients = createClients();
 
         while (!isInterrupted()) {
             try {
@@ -23,8 +24,8 @@ public class Stress extends Thread {
         }
     }
 
-    private ArrayList<Thread> createClients() {
-        ArrayList<Thread> threads = new ArrayList<>();
+    private List<Thread> createClients() {
+        List<Thread> threads = new ArrayList<>();
         Thread client;
         for (int i = 0; i < parameters.getNumberOfConnections(); i++) {
             client = new Client();
@@ -34,7 +35,7 @@ public class Stress extends Thread {
         return threads;
     }
 
-    private void interruptedClients(ArrayList<Thread> clients) {
+    private void interruptedClients(List<Thread> clients) {
         for (int i = 0; i < clients.size(); i++) {
             clients.get(i).interrupt();
         }
