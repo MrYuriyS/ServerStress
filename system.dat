@@ -1,4 +1,4 @@
-Link = https://prog.kiev.ua;
-Number Of Connections = 10000;
-Timer = 60; 
-Reconnect = true
+Link == https://prog.kiev.ua;
+Number Of Connections == 10000;
+Timer == 60;
+Reconnect == true
