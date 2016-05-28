@@ -23,8 +23,8 @@ public abstract class Server {
         try (InputStreamReader is = new InputStreamReader(connection.getInputStream());
              BufferedReader br = new BufferedReader(is)) {
             char[] buffer = new char[1024];
-            int size;
-            while (/*(size =*/ br.read(buffer)/*)*/ >= 0) {
+            //int size;
+            while ((/*size = */br.read(buffer)) >= 0) {
                 //page.append(new String(buffer, 0, size));
             }
         } finally {

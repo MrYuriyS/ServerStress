@@ -27,7 +27,7 @@ public class Parameters {
 
             String[] pairs = text.split(";");
             for (String pair : pairs) {
-                String[] p = pair.split("=");
+                String[] p = pair.split("==");
 
                 switch (p[0]) {
                     case "Link":
